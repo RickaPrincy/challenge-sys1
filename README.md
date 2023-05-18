@@ -111,3 +111,27 @@ echo -n 0C:B3:19:B9:4F:C6GT-S7390G | sha1sum
 - **-n** est utilisé pour dire à echo de ne pas mettre un retour à la ligne, sinon ce retour à la ligne sera également haché par sha1sum.
 
 Et c'est déjà fini, nous avons notre mot de passe.
+
+## **6. SIP - Authentification**
+
+Pour cette challenge, il suffit d'analyser ce qui est écrit
+`...."PLAIN"****`.
+
+Quoi ? oui... vous avez raison, le mot de passe est ce fameux chiffre derrière le "PLAIN".
+
+## **7. DNS - Tranfèrt de zone**
+
+Voici le sujet : 
+```sh
+#Un administrateur peu consciencieux a mis en place un service DNS pour le domaine "ch11.
+#challenge01.root-me.org"...
+
+Paramètres de connexion au challenge
+Hôte	challenge01.root-me.org
+Protocole	DNS
+Port	54011
+```
+Pour cette challenge, il suffit d'utiliser la commande `dig` pour comme suite : 
+```sh
+    dig @challenge01.root-me.org -p 54011 ch11.challenge01.root-me.org txt
+```.
